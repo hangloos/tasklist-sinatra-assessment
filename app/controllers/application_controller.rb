@@ -21,6 +21,11 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  post '/signup' do
+    binding.pry
+
+  end
+
   get '/login' do
     if !logged_in?
       erb :login
