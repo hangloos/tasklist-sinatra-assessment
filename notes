@@ -31,6 +31,10 @@ db folder , migrate folder
 spec folder - not making spec 
 
 
+I create user. He has a lists. Those lists have tasks through list_tasks database. Those tasks connect to the user through the list_task to the lists and then to the user. The tasks have types through the the task_type db. The user has task types from types through task_types to tasks through list_tasks to lists to user. 
 
+***Any validation failures must be shown to the user with an error message.. 
+
+FLASH MESSAGES
 
 
