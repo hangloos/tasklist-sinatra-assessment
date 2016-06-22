@@ -48,19 +48,9 @@ class ApplicationController < Sinatra::Base
       redirect '/users/home'
     else
       flash[:message] = "Sorry, we don't recognize your login information. Try again!!!"
-      redirect '/login'
+      redirect '/'
     end
   end
-
-  get '/users/home' do
-    if logged_in? && current_user_logged_in?
-      @user = current_user
-      erb :'/users/home'
-    else
-      redirect '/login'
-    end
-  end
-
 
   get '/logout' do 
     if logged_in?

@@ -1,7 +1,20 @@
-<h1>Welcome Home <%=@user.username%></h1>
+<h1>Welcome Home <%=@user.username.titleize%></h1>
 <h2>Date: <%=Time.now%></h2>
-
-<ul>
+  <ul>
     <li><a href="/logout">Log Out</a></li>
-</ul>
+  </ul>
+
+  
+  <h2>Lists - <%=@user.lists.map{|list| list.name}%></h2>
+
+
+  <h3>Create a List</h3>
+  <form method="POST" action="/users/home">
+      <label>List Name:</label>
+      <input type="text" name="list[name]">
+    <br></br>
+      <input type="hidden" name="user[id]" value="<%=@user.id%>">
+      <input type="submit" value="Create List">
+  </form>
+
 
