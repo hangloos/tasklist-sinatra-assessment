@@ -6,6 +6,8 @@ User - has_many lists. has_many tasks, through lists
 List - belongs_to a user, has_many list_tasks, has_many tasks through list_tasks
 Task - has_many list_tasks, has_many lists, through list_tasks,  belongs_to a user, through list.
 list_task - belongs_to :list, belongs_to :task
+type - has many task_categories. has many tasks through task_categories. has many lists trhough tasks somehow
+task_type - belongs to list, belongs to category
 
 
 Tables:
@@ -14,6 +16,9 @@ users- name
 lists - name, user_id
 tasks - name, fitness, coding, trading, other (these will be category arrays that can list out certain smaller lists inside my list) 
 list_tasks - list_id, task_id
+types - name
+task_types - task_id, type_id
+
 
 
 create gemfile - x
@@ -23,7 +28,8 @@ config - environment - x
 app folder - x
 rakefile - working, rake -T working - x
 db folder , migrate folder
-spec folder
+spec folder - not making spec 
+
 
 
 
