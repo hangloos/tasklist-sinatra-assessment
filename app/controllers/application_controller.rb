@@ -1,9 +1,11 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
   
   configure do
     enable :sessions
+    use Rack::Flash
     set :session_secret, "secret"
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -39,10 +41,20 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  post '/login' do
+    @user = User.find_by(username: params[:user][:username])
+    if !logged_in? && @user && @user.authenticate(params[:user][:passowrd])
+      session[:user_id] = @user.id
+      redirect '/users/home'
+    else
+      flash[:message] = "Sorry, we don't recognize your login information. Try again!!!"
+      redirect '/login'
+    end
+  end
 
   get '/users/home' do
-    @user = current_user
     if logged_in? && current_user_logged_in?
+      @user = current_user
       erb :'/users/home'
     else
       redirect '/login'
