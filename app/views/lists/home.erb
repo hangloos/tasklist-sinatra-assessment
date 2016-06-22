@@ -1,0 +1,23 @@
+<h2>Hey <%=@user.username.titleize%></h2>
+<li><a href="/users/home">Home Page</a></li>
+<h3>Current Lists: </h3>
+
+<form method="POST" action="/lists/delete">
+  <%@user.lists.map do |x| %>
+  <label><%=x.name%></label>
+  <input type="checkbox" name="list[id]" value="<%=x.id%>">
+  <%end%>
+  <input type="submit" value="Delete List">
+</form>
+
+
+<h3>Edit Lists: </h3>
+
+<form method="POST" action="/lists/edit">
+  <%@user.lists.map do |x| %>
+  <label><%=x.name%></label>
+  <input type="text" name="list[name]" value="<%=x.name%>">
+  <input type="hidden" name="list[id]" value="<%=x.id%>">
+  <%end%>
+  <input type="submit" value="Edit List">
+</form>

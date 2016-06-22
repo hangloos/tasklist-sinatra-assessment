@@ -6,7 +6,9 @@
 
   
   <h2>Lists - <%=@user.lists.map{|list| list.name}%></h2>
-
+  <li><a href="/lists">Lists</a></li>
+  <li><a href="/lists">Create Tasks</a></li>
+  
 
   <h3>Create a List</h3>
   <form method="POST" action="/users/home">
@@ -16,5 +18,3 @@
       <input type="hidden" name="user[id]" value="<%=@user.id%>">
       <input type="submit" value="Create List">
   </form>
-
-
