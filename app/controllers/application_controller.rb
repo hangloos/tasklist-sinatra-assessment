@@ -9,34 +9,38 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  get '/' do 
-    erb :index
+  get '/' do
+    if logged_in? && current_user_logged_in?
+      redirect '/users/home'
+    else 
+      erb :index
+    end
   end
 
   get '/signup' do
     if !logged_in?
       erb :signup
     else
-      redirect '/users/:id/home'
+      redirect '/users/home'
     end
   end
 
   post '/signup' do
     @user = User.create(params[:user])
     session[:user_id] = @user.id
-    redirect '/user/#{@user.id}/home'
+    erb :'/users/home'
   end
 
   get '/login' do
     if !logged_in?
       erb :login
     else
-      redirect '/users/:id/home'
+      redirect '/users/home'
     end
   end
 
 
-  get '/users/:id/home' do
+  get '/users/home' do
     @user = current_user
     if logged_in? && current_user_logged_in?
       erb :'/users/home'
@@ -49,7 +53,7 @@ class ApplicationController < Sinatra::Base
   get '/logout' do 
     if logged_in?
       session.clear
-      redirect '/login'
+      redirect '/'
     else
       redirect '/'
     end
