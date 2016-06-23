@@ -1,5 +1,6 @@
 <h2>Hey <%=@user.username.titleize%></h2>
 <li><a href="/users/home">Home Page</a></li>
+
 <h3>List: <%=@list.name%></h3>
 
 <h3>Create a Task</h3>
@@ -23,5 +24,18 @@
       <input type="hidden" name="list[id]" value="<%=@list.id%>">
 
       <input type="submit" value="Delete Task">
+    </form>
+
+    <h3>Edit Tasks:</h3>
+    <form method="POST" action="/users/tasks/edit">
+      <%@list.tasks.map do |x| %>
+      <label><%=x.name%></label>
+      <input type="checkbox" name="task[id]" value="<%=x.id%>">
+      <%end%>
+      <input type="hidden" name="list[id]" value="<%=@list.id%>">
+      <br></br>
+      <input type="text" name="task[name]">
+
+      <input type="submit" value="Edit Task">
     </form>
 

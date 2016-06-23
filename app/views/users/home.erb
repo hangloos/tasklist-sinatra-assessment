@@ -4,11 +4,11 @@
     <li><a href="/logout">Log Out</a></li>
   </ul>
 
-  
-  <h2>Lists - <%=@user.lists.map{|list| list.name}%></h2>
-  <li><a href="/lists">Lists</a></li>
-  
-  
+  <li><a href="/lists">Edit Lists</a>
+  <h3>View Lists:</h3>
+  <%@user.lists.map do |x| %>
+  <li><a href="/users/<%=x.slug%>"><%=x.name%></a></li>
+  <%end%>
 
   <h3>Create a List</h3>
   <form method="POST" action="/users/home">

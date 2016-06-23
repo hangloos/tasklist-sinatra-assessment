@@ -64,6 +64,13 @@ class UsersController < ApplicationController
     redirect "/users/#{@list.slug}"
   end
 
+  post '/users/tasks/edit' do
+    @list = List.find_by_id(params[:list][:id])
+    @task = Task.find_by_id(params[:task][:id])
+    @task.update(name: params[:task][:name])
+  redirect "/users/#{@list.slug}"
+  end
+
 
 
 
