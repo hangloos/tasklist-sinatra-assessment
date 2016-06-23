@@ -1,0 +1,27 @@
+<h2>Hey <%=@user.username.titleize%></h2>
+<li><a href="/users/home">Home Page</a></li>
+<h3>List: <%=@list.name%></h3>
+
+<h3>Create a Task</h3>
+  <form method="POST" action="/users/tasks">
+      <label>Task Name:</label>
+      <input type="text" name="task[name]">
+    <br></br>
+      <input type="hidden" name="user[id]" value="<%=@user.id%>">
+      <input type="hidden" name="list[id]" value="<%=@list.id%>">
+      <input type="submit" value="Create Task">
+  </form>
+
+
+  <h3>Tasks:</h3>
+    <form method="POST" action="/users/tasks/delete">
+      <%@list.tasks.map do |x| %>
+      <label><%=x.name%></label>
+      <input type="checkbox" name="task[name]" value="<%=x.name%>">
+      <input type="hidden" name="task[id]" value="<%=x.id%>">
+      <%end%>
+      <input type="hidden" name="list[id]" value="<%=@list.id%>">
+
+      <input type="submit" value="Delete Task">
+    </form>
+
