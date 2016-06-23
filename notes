@@ -38,3 +38,10 @@ I create user. He has a lists. Those lists have tasks through list_tasks databas
 FLASH MESSAGES
 
 
+#Home.erb Notes:
+So home lets you create list, edit a list, delete a list
+
+view your lists, tasks and types
+
+
+
