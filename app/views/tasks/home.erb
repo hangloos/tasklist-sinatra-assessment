@@ -17,7 +17,7 @@
   <h3>Delete Tasks:</h3>
     <form method="POST" action="/tasks/delete">
       <%@list.tasks.map do |x| %>
-      <input type="checkbox" name="task[id]" value="<%=x.id%>">
+      <input type="radio" name="task[id]" value="<%=x.id%>">
       <label><%=x.name%></label>
       <%end%>
       <input type="hidden" name="list[id]" value="<%=@list.id%>">
@@ -25,10 +25,10 @@
       <input type="submit" value="Delete Task">
     </form>
 
-    <h3>Edit Tasks:</h3>
+  <h3>Edit Tasks:</h3>
     <form method="POST" action="/tasks/edit">
       <%@list.tasks.map do |x| %>
-      <input type="checkbox" name="task[id]" value="<%=x.id%>">
+      <input type="radio" name="task[id]" value="<%=x.id%>">
       <label><%=x.name%></label>
       <%end%>
       <input type="hidden" name="list[id]" value="<%=@list.id%>">

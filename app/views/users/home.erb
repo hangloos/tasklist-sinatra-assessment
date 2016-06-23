@@ -1,16 +1,15 @@
 <h1>Welcome Home <%=@user.username.titleize%></h1>
 <h2>Date: <%=Time.now%></h2>
-  <ul>
-    <li><a href="/logout">Log Out</a></li>
-  </ul>
+<li><a href="/logout">Log Out</a></li>
 
   <li><a href="/lists">Edit Lists</a>
   <h3>View Lists:</h3>
-  <%@user.lists.map do |x| %>
-  <li><a href="/users/<%=x.slug%>"><%=x.name%></a></li>
-  <%end%>
+    <%@user.lists.map do |x| %>
+    <li><a href="/users/<%=x.slug%>"><%=x.name%></a></li>
+    <%end%>
 
   <h3>Create a List</h3>
+  
   <form method="POST" action="/users/home">
       <label>List Name:</label>
       <input type="text" name="list[name]">

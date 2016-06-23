@@ -12,7 +12,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    binding.pry
     if logged_in? && current_user_logged_in?
       redirect '/users/home'
     else
