@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     end
   end
 
-  post '/lists/delete' do 
+  post '/lists/delete' do
     @list = List.find_by_id(params[:list][:id])
     @list.delete
     redirect '/lists'
@@ -50,32 +50,25 @@ class UsersController < ApplicationController
     end 
   end
 
-  post '/users/tasks' do 
+  post '/tasks' do
     @list = List.find_by_id(params[:list][:id])
     @task = Task.create(name: params[:task][:name])
     @list.tasks << @task
     redirect "/users/#{@list.slug}"
   end
 
-  post '/users/tasks/delete' do
+  post '/tasks/delete' do
     @list = List.find_by_id(params[:list][:id])
     @task = Task.find_by_id(params[:task][:id])
     @task.delete
     redirect "/users/#{@list.slug}"
   end
 
-  post '/users/tasks/edit' do
+  post '/tasks/edit' do
     @list = List.find_by_id(params[:list][:id])
     @task = Task.find_by_id(params[:task][:id])
     @task.update(name: params[:task][:name])
-  redirect "/users/#{@list.slug}"
+    redirect "/users/#{@list.slug}"
   end
 
-
-
-
 end
-
-# testing info:
-#user1
-#1
